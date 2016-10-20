@@ -1,23 +1,32 @@
+import java.util.ArrayList;
+
 public class Node {
 	private int key;
-	private Node[] pointerList;
+	private ArrayList<Node> pointerList;
 
-	public Node (double levelCap) {
-		int lcap = (int) levelCap;
-		pointerList = new Node[lcap];	}
+	public Node (){
+		pointerList = new ArrayList<Node> ();
+	}
 
-	public Node (int key, double levelCap) {
-		int lcap = (int) levelCap;
+	public Node (int key, double level) {
+		int lcap = (int) level;
 		this.key = key;
-		pointerList = new Node[lcap];
+		pointerList = new ArrayList<Node> ();
+		for (int i = 0; i < lcap; i++) {
+			pointerList.add(new Node());
+		}
 	}
 
 	public int getKey(){
 		return key;
 	}
 
-	public Node[] getList() {
-		return pointerList;
+	public Node getNext(int i) {
+		return pointerList.get(i);
+	}
+
+	public void addToList(Node n) {
+		pointerList.add(n);
 	}
 
 	public void setValue(int k) {
@@ -25,7 +34,7 @@ public class Node {
 	}
 
 	public int getMaxUsedLevel() {
-		return pointerList.length-1;
+		return pointerList.size()-1;
 	}
 
 }
