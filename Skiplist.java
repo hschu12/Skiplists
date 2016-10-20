@@ -41,7 +41,7 @@ public class Skiplist {
 			while ( x.getNext(i) != null && x.getNext(i).getKey() < key) {
 				System.out.println("while");
 				x = x.getNext(i);
-				update.getNext(i) = x;
+				update.setNext(i, x);
 			}
 		}
 		System.out.println(x);
@@ -59,8 +59,8 @@ public class Skiplist {
 			System.out.println("xmax: " + x.getMaxUsedLevel() + " and maxlvl " +  maxLevel);
 			for (int i = 0; i <= Math.min(x.getMaxUsedLevel(), maxLevel); i++) {
 				System.out.println("for with i = " + i);
-				x.getNext(i) = update.getNext(i);
-				update.getNext(i) = x;
+				x.setNext(i, update.getNext(i));
+				update.setNext(i, x);
 			}
 			size++;
 			if (Math.floor(lCap(size)) > maxLevel) {
@@ -77,13 +77,13 @@ public class Skiplist {
 		for (int i = maxLevel; i >= 0; i--) {
 			while (x.getNext(i) != null && x.getNext(i).getKey() < key) {
 				x = x.getNext(i);
-				update.getNext(i) = x;
+				update.setNext(i, x);
 			}
 		}
 		x = x.getNext(0);
 		if (x != null && x.getKey() == key) {
 			for (int i = 1; i < Math.min(x.getMaxUsedLevel(), maxLevel); i++) {
-				update.getNext(i).getNext(i) = x.getNext(i);
+				//update.getNext(i).getNext(i) = x.getNext(i);
 			}
 			x = null;
 			size--;
@@ -110,12 +110,12 @@ public class Skiplist {
 		Node b = a.getNext(level);
 		while ( b != null ) {
 			if (b.getMaxUsedLevel() > level) {
-				a.getNext(level+1) = b;
+				a.setNext(level+1, b);
 				a = b;
 			}
 			b = b.getNext(level);
 		}
-		a.getNext(level+1) = null;
+		a.setNext(level+1, null);
 		maxLevel = level+1;
 	}
 

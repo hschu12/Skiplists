@@ -25,6 +25,10 @@ public class Node {
 		return pointerList.get(i);
 	}
 
+	public void setNext(int i, Node x) {
+		pointerList.add(i, x);
+	}
+
 	public void addToList(Node n) {
 		pointerList.add(n);
 	}
