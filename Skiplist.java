@@ -12,7 +12,6 @@ public class Skiplist {
 		header = new Node();
 		header.addToList(null);
 		maxLevel = 0;
-		System.out.println("Header address: " + header);
 	}
 
 	public boolean search (int key) {
@@ -51,9 +50,7 @@ public class Skiplist {
 				update[i] = x;
 			}
 		}
-		System.out.println("before: " + x);
 		x = x.getNext(0);
-		System.out.println("after: " + x);
 		if ( x != null && x.getKey() == key) {
 			x.setValue(key);
 			System.out.println(key + " already exists. Value have been updated");
@@ -75,18 +72,27 @@ public class Skiplist {
 	}
 
 	public boolean delete (int key) {
-		Node update = header;
+		System.out.println("Deleting " + key);
+		int i;
+		Node[] update = new Node[levelCap];
+		for (i = 0; i <= maxLevel; i++) {
+			update[i] = new Node();
+			for (int j = 0; j <= maxLevel; j++) {
+				update[i].setNext(j, null);
+			}
+		}
+		update[0] = header;
 		Node x = header;
-		for (int i = maxLevel; i >= 0; i--) {
+		for (i = maxLevel; i >= 0; i--) {
 			while (x.getNext(i) != null && x.getNext(i).getKey() < key) {
 				x = x.getNext(i);
-				update.setNext(i, x);
+				update[i] = x;
 			}
 		}
 		x = x.getNext(0);
 		if (x != null && x.getKey() == key) {
-			for (int i = 1; i < Math.min(x.getMaxUsedLevel(), maxLevel); i++) {
-				//update.getNext(i).getNext(i) = x.getNext(i);
+			for (i = 0; i <= Math.min(x.getMaxUsedLevel(), maxLevel); i++) {
+				update[i].setNext(i, x.getNext(i));
 			}
 			x = null;
 			size--;
@@ -104,7 +110,6 @@ public class Skiplist {
 		while (Math.random() < p && level < cap){
 			level++;
 		}
-		System.out.println("RLvl set level to: " + level);
 		return level;
 	}
 

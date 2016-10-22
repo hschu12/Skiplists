@@ -6,13 +6,17 @@ public class Program {
 		list.insert(2);
 		list.insert(1);
 		list.insert(5);
-	
-		/*list.insert(4);
-		list.insert(5);
-		list.insert(2);*/
+		
+		list.search(10);
 		list.search(5);
 		list.search(2);
 		list.search(1);
-	}
+		
+		list.delete(2);
 
+		list.search(5);
+		list.search(2);
+		list.search(1);
+
+	}
 }
