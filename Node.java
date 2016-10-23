@@ -12,8 +12,8 @@ public class Node {
 		int lcap = (int) level;
 		this.key = key;
 		pointerList = new ArrayList<Node> ();
-		for (int i = 0; i <= lcap; i++) {
-			pointerList.add(null);
+		for (int i = 0; i < lcap; i++) {
+			pointerList.add(new Node());
 		}
 	}
 
@@ -38,6 +38,14 @@ public class Node {
 	}
 
 	public int getMaxUsedLevel() {
+		/*int level = 0;
+		for ( int i = 1; i < pointerList.size() ; i++ ) {
+			if (pointerList.get(i) != null ) {
+				level++;
+			}
+		}
+		System.out.println("level: " + level + ", size = " + pointerList.size());
+		return level;*/
 		return pointerList.size()-1;
 	}
 

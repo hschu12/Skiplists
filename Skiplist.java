@@ -1,3 +1,8 @@
+/**************************************
+* Henrik Schulz - 2016                *
+* DM803 - Advanced Datastructures     *
+**************************************/
+
 public class Skiplist {
 	private Node header;
 	private int maxLevel;
@@ -12,6 +17,26 @@ public class Skiplist {
 		header = new Node();
 		header.addToList(null);
 		maxLevel = 0;
+	}
+
+	public void printHeaderPointer() {
+		Node x = header;
+		for (int i = maxLevel; i >= 0 ; i--) {
+			if(x.getNext(i) != null) {
+				System.out.println(x.getNext(i).getKey());
+			}
+			else {
+				System.out.println(x.getNext(i));
+			}
+		}
+	}
+
+	public void printList(int i) {
+		Node x = header;
+		while (x.getNext(i) != null) {
+			System.out.println(x.getNext(i).getKey());
+			x = x.getNext(i);
+		}
 	}
 
 	public boolean search (int key) {
@@ -36,19 +61,12 @@ public class Skiplist {
 		System.out.println("inserting " + key);
 		int i;
 		Node[] update = new Node[levelCap];
-		for (i = 0; i <= maxLevel; i++) {
-			update[i] = new Node();
-			for (int j = 0; j <= maxLevel; j++) {
-				update[i].setNext(j, null);
-			}
-		}
-		update[0] = header;
 		Node x = header;
 		for (i = maxLevel; i >= 0; i--) {
 			while ( x.getNext(i) != null && x.getNext(i).getKey() < key) {
 				x = x.getNext(i);
-				update[i] = x;
 			}
+			update[i] = x;
 		}
 		x = x.getNext(0);
 		if ( x != null && x.getKey() == key) {
@@ -57,15 +75,16 @@ public class Skiplist {
 			return false;
 		}
 		else {
-			x = new Node(key, randomLevel());
-			for (i = 0; i <= Math.min(x.getMaxUsedLevel(), maxLevel); i++) {
+			x = new Node(key, randomLevel()); //Random kan gå til level cap
+			//System.out.println("xused Level: " + x.getMaxUsedLevel() + " and maxlvl: " + maxLevel);
+			for (i = 0; i <= Math.min(x.getMaxUsedLevel(), maxLevel); i++) { // Burde kun rette dem som skal.
 				x.setNext(i, update[i].getNext(i));
 				update[i].setNext(i, x);
 			}
 			size++;
 			if ( Math.floor(lCap()) > maxLevel ) {
-				System.out.println("increase max");
-				//increaseMaximumLevelOfList();
+				System.out.println("increasing max");
+				increaseMaximumLevelOfList();
 			}
 			return true;
 		}
@@ -75,19 +94,12 @@ public class Skiplist {
 		System.out.println("Deleting " + key);
 		int i;
 		Node[] update = new Node[levelCap];
-		for (i = 0; i <= maxLevel; i++) {
-			update[i] = new Node();
-			for (int j = 0; j <= maxLevel; j++) {
-				update[i].setNext(j, null);
-			}
-		}
-		update[0] = header;
 		Node x = header;
 		for (i = maxLevel; i >= 0; i--) {
 			while (x.getNext(i) != null && x.getNext(i).getKey() < key) {
 				x = x.getNext(i);
-				update[i] = x;
 			}
+			update[i] = x;
 		}
 		x = x.getNext(0);
 		if (x != null && x.getKey() == key) {
@@ -97,6 +109,7 @@ public class Skiplist {
 			x = null;
 			size--;
 			if ( Math.floor(lCap()) < maxLevel) {
+				System.out.println("decrease");
 				maxLevel--;
 			}
 			return true;
@@ -106,10 +119,11 @@ public class Skiplist {
 
 	public int randomLevel () {
 		int level = 1;
-		double cap = lCap();
+		double cap = Math.ceil(lCap());
 		while (Math.random() < p && level < cap){
 			level++;
 		}
+		//System.out.println("Random = " + level);
 		return level;
 	}
 
@@ -118,6 +132,7 @@ public class Skiplist {
 		Node a = header;
 		Node b = a.getNext(level);
 		while ( b != null ) {
+			//System.out.println("MaxusedLevel: " + b.getMaxUsedLevel());
 			if (b.getMaxUsedLevel() > level) {
 				a.setNext(level+1, b);
 				a = b;
