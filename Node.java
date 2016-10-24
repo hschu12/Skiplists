@@ -26,7 +26,12 @@ public class Node {
 	}
 
 	public void setNext(int i, Node x) {
-		pointerList.add(i, x);
+		if (pointerList.get(i) == null) {
+			pointerList.add(i, x);
+		}
+		else {
+			pointerList.set(i, x);
+		}
 	}
 
 	public void setValue(int k) {
@@ -38,14 +43,6 @@ public class Node {
 	}
 
 	public int getMaxUsedLevel() {
-		/*int level = 0;
-		for ( int i = 1; i < pointerList.size() ; i++ ) {
-			if (pointerList.get(i) != null ) {
-				level++;
-			}
-		}
-		System.out.println("level: " + level + ", size = " + pointerList.size());
-		return level;*/
 		return pointerList.size()-1;
 	}
 
