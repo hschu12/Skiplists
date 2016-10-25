@@ -234,7 +234,7 @@ public class Test {
 		* Permuted input. Check number of pointers used per search *
 		***********************************************************/
 
-		System.out.println("Effect of p - Descending-Order");
+		System.out.println("Effect of p - permuted-Order");
 
 		ArrayList<Integer> permuteOrderAverageListPEffect = new ArrayList<Integer>();
 		for( i = 1; i <= 1000; i++) {
@@ -375,6 +375,10 @@ public class Test {
 		}
 
 		for (int j = 1; j <= 5 ; j++) {
+
+			System.out.println("Run: " + j);
+			System.out.println();
+				
 			for ( i = 0; i < pointerusedRange; i++ ) {
 				pointersUsedForSearch[i] = 0;
 			}
