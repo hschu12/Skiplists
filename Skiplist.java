@@ -35,13 +35,13 @@ public class Skiplist {
 		pointerused++;
 		if ( x != null && x.getKey() == key) {
 			if(!test) {
-				System.out.println("Found: " + x.getKey());
+				System.out.print("Found: " + x.getKey() + " ");
 			}
 			return true;
 		}
 		else {
 			if(!test){
-				System.out.println(key + " not found");
+				System.out.print(key + " not found ");
 			}
 			return false;
 		}
@@ -61,7 +61,7 @@ public class Skiplist {
 		if ( x != null && x.getKey() == key) {
 			x.setValue(key);
 			if(!test) {
-				System.out.println(key + " already exists. Value have been updated");
+				System.out.print(key + " already exists. Value have been updated. ");
 			}
 			return false;
 		}
