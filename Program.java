@@ -13,6 +13,14 @@ import java.io.IOException;
 public class Program {
 	
 	public static void main(String[] args){
+		if (args.length == 0) {
+			System.out.println("Missing input file");
+			System.exit(0);
+		}
+		if (args.length > 1) {
+			System.out.println("Too many arguments");
+			System.exit(0);
+		}
 		List<String> lines = new ArrayList<String>();
 		try{
 			lines = Files.readAllLines(Paths.get(args[0]), Charset.defaultCharset());
