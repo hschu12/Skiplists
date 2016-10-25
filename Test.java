@@ -10,8 +10,8 @@ public class Test {
 
 
 		/***********************************************************
-		* Test of Average Search Complexity						   *
-		* In-Order (Ascending) input. 							   *
+		* Test of Average Search Complexity                        *
+		* In-Order (Ascending) input.                              *
 		***********************************************************/
 
 		System.out.println("Average - In-Order");
@@ -52,7 +52,7 @@ public class Test {
 		}
 		
 		/***********************************************************
-		* Reverse-Order (Descending) input. 					   *
+		* Reverse-Order (Descending) input.                        *
 		***********************************************************/
 
 		System.out.println("Average - Descend-Order");
@@ -135,8 +135,8 @@ public class Test {
 		}
 
 		/***********************************************************
-		* Test of effect of p 									   *
-		* In-Order (Ascending) input. 							   *
+		* Test of effect of p                                      *
+		* In-Order (Ascending) input.                              *
 		***********************************************************/
 
 		System.out.println("Effect of p - In-Order");
@@ -183,7 +183,7 @@ public class Test {
 		}
 
 		/***********************************************************
-		* Reverse-Order (Descending) input. 					   *
+		* Reverse-Order (Descending) input.                        *
 		***********************************************************/
 
 		System.out.println("Effect of p - Descending-Order");
@@ -280,8 +280,8 @@ public class Test {
 		}
 
 		/***********************************************************
-		* Test of Variation in search complexity				   *
-		* In-Order (Ascending) input. 							   *
+		* Test of Variation in search complexity                   *
+		* In-Order (Ascending) input.                              *
 		***********************************************************/
 
 		System.out.println("Ascending order list");
@@ -318,7 +318,7 @@ public class Test {
 		}
 
 		/***********************************************************
-		* Reverse-Order (Descending) input. 					   *
+		* Reverse-Order (Descending) input.                        *
 		***********************************************************/
 		
 		System.out.println();
