@@ -29,7 +29,7 @@ public class Test {
 
 			while( size < 950 ) {
 				size = size + 50;
-				inOrderAverageSkip = new Skiplist(0.5, true);
+				inOrderAverageSkip = new Skiplist(0.5);
 				double acumulatedPointers = 0;
 				System.out.print("Size of n = " + size);
 
@@ -70,7 +70,7 @@ public class Test {
 
 			while( size < 950 ) {
 				size = size + 50;
-				descendAverageOrderSkip = new Skiplist(0.5, true);
+				descendAverageOrderSkip = new Skiplist(0.5);
 				double acumulatedPointers = 0;
 				System.out.print("Size of n = " + size);
 
@@ -104,7 +104,7 @@ public class Test {
 		}
 		Collections.shuffle(permutedAverage);
 
-		Skiplist permutedAverageSkip = new Skiplist(0.5, true);
+		Skiplist permutedAverageSkip = new Skiplist(0.5);
 
 		for (int j = 1; j <= 5; j++ ) {
 			System.out.println();
@@ -112,7 +112,7 @@ public class Test {
 
 			while( size < 950 ) {
 				size = size + 50;
-				permutedAverageSkip = new Skiplist(0.5, true);
+				permutedAverageSkip = new Skiplist(0.5);
 				double acumulatedPointers = 0;
 				System.out.print("Size of n = " + size);
 
@@ -158,7 +158,7 @@ public class Test {
 
 				while( size < 950 ) {
 					size = size + 50;
-					inOrderAveragePEffectSkip = new Skiplist(probability, true);
+					inOrderAveragePEffectSkip = new Skiplist(probability);
 					double acumulatedPointers = 0;
 					System.out.print("Size of n = " + size);
 
@@ -206,7 +206,7 @@ public class Test {
 
 				while( size < 950 ) {
 					size = size + 50;
-					descendOrderAveragePEffectSkip = new Skiplist(probability, true);
+					descendOrderAveragePEffectSkip = new Skiplist(probability);
 					double acumulatedPointers = 0;
 					System.out.print("Size of n = " + size);
 
@@ -255,7 +255,7 @@ public class Test {
 
 				while( size < 950 ) {
 					size = size + 50;
-					permuteOrderAveragePEffectSkip = new Skiplist(probability, true);
+					permuteOrderAveragePEffectSkip = new Skiplist(probability);
 					double acumulatedPointers = 0;
 					System.out.print("Size of n = " + size);
 
@@ -291,7 +291,7 @@ public class Test {
 			inOrderList.add(i);
 		}
 
-		Skiplist inOrderSkip = new Skiplist(0.5, true);
+		Skiplist inOrderSkip = new Skiplist(0.5);
 
 		for (i = 0; i < 1000; i++) {
 			inOrderSkip.insert(inOrderList.get(i));
@@ -329,7 +329,7 @@ public class Test {
 			descendOrderList.add(i);
 		}
 		
-		Skiplist descendOrderSkip = new Skiplist(0.5, true);
+		Skiplist descendOrderSkip = new Skiplist(0.5);
 
 		for (i = 0; i < 1000; i++) {
 			descendOrderSkip.insert(descendOrderList.get(i));
@@ -368,7 +368,7 @@ public class Test {
 		}
 		Collections.shuffle(permuted);
 
-		Skiplist permutedSkip = new Skiplist(0.5, true);
+		Skiplist permutedSkip = new Skiplist(0.5);
 
 		for (i = 0; i < 1000; i++) {
 			permutedSkip.insert(permuted.get(i));

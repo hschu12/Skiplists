@@ -10,11 +10,9 @@ public class Skiplist {
 	private int levelCap;
 	private double size;
 	public int pointerused;
-	private boolean test;
 
-	public Skiplist (double p, boolean test) {
+	public Skiplist (double p) {
 		size = 0;
-		this.test = test;
 		probability = p;
 		levelCap = 10;
 		header = new Node();
@@ -34,15 +32,9 @@ public class Skiplist {
 		x = x.getNext(0);
 		pointerused++;
 		if ( x != null && x.getKey() == key) {
-			if(!test) {
-				System.out.print("Found: " + x.getKey() + " ");
-			}
 			return true;
 		}
 		else {
-			if(!test){
-				System.out.print(key + " not found ");
-			}
 			return false;
 		}
 	}
@@ -60,9 +52,6 @@ public class Skiplist {
 		x = x.getNext(0);
 		if ( x != null && x.getKey() == key) {
 			x.setValue(key);
-			if(!test) {
-				System.out.print(key + " already exists. Value have been updated. ");
-			}
 			return false;
 		}
 		else {
